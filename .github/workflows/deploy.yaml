@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  AWS_REGION: eu-west-2
+  AWS_REGION: ap-south-1
   ECR_REPO_SERVICE1: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.eu-west-2.amazonaws.com/service1
   ECR_REPO_SERVICE2: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.eu-west-2.amazonaws.com/service2
   EKS_CLUSTER: healthcare-app-cluster

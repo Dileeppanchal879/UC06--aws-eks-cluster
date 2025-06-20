@@ -15,26 +15,26 @@ spec:
         app: service2
     spec:
       containers:
-      - name: service2
-        image: 412381761490.dkr.ecr.eu-west-2.amazonaws.com/service2:20250324060146
-        ports:
-        - containerPort: 3001 # Updated to match the service targetPort
-        resources:
-          requests:
-            memory: "128Mi"
-            cpu: "250m"
-          limits:
-            memory: "256Mi"
-            cpu: "500m"
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 3001
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 3001
-          initialDelaySeconds: 5
-          periodSeconds: 10
+        - name: service2
+          image: 916853736622.dkr.ecr.ap-south-1.amazonaws.com/service2:20250324060146
+          ports:
+            - containerPort: 3001 # Updated to match the service targetPort
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3001
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3001
+            initialDelaySeconds: 5
+            periodSeconds: 10
