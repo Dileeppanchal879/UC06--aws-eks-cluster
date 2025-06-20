@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  AWS_REGION: eu-west-2
+  AWS_REGION: 
   ECR_REPO_SERVICE1: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.eu-west-2.amazonaws.com/service1
   ECR_REPO_SERVICE2: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.eu-west-2.amazonaws.com/service2
   EKS_CLUSTER: healthcare-app-cluster
@@ -47,6 +47,11 @@ jobs:
 
       - name: Generate Unique Image Tag
         run: echo "IMAGE_TAG=$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
+
+      - name: Login to Amazon ECR
+        run: |
+          aws ecr get-login-password --region eu-west-2 | docker login --username AWS --password-stdin $ECR_REPO_SERVICE1.dkr.ecr.eu-west-2.amazonaws.com
+
 
       - name: Build and Push Docker Image for Service 1
         run: |
